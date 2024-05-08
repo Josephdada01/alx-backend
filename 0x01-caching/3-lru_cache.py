@@ -17,7 +17,6 @@ class LRUCache(BaseCaching):
         """
         super().__init__()
         self.usedKeys = []
-        
 
     def put(self, key, item):
         """
@@ -31,7 +30,8 @@ class LRUCache(BaseCaching):
             if key not in self.usedKeys:
                 self.usedKeys.append(key)
             else:
-                self.usedKeys.append(self.usedKeys.pop(self.usedKeys.index(key)))
+                self.usedKeys.append(self.usedKeys.pop(
+                    self.usedKeys.index(key)))
             if len(self.usedKeys) > BaseCaching.MAX_ITEMS:
                 terminate = self.usedKeys.pop(0)
                 del self.cache_data[terminate]
