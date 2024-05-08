@@ -14,7 +14,7 @@ class FIFOCache(BaseCaching):
         overloading and to calling the parent init
         """
         super().__init__()
-        
+
     def put(self, key, item):
         """
         Method that assign to the dictionary self.cache_data the
@@ -39,4 +39,6 @@ class FIFOCache(BaseCaching):
         """
         return the value in self.cache_data linked to key
         """
-        return self.cache_data.get(key, None)
+        if key is None or key not in self.cache_data:
+            return None
+        return self.cache_data.get[key]
