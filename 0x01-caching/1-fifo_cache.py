@@ -27,11 +27,12 @@ class FIFOCache(BaseCaching):
         if key is None or item is None:
             return
 
-        if len(self.cache_data) >= self.MAX_ITEMS:
+        if len(self.cache_data) >= BaseCaching.MAX_ITEMS and \
+                key not in self.cache_data.keys():
             # Find the first item inserted and remove it
-            first_item_key = next(iter(self.cache_data))
+            first_item_key = next(iter(self.cache_data.keys()))
             del self.cache_data[first_item_key]
-            print(f"DISCARD: {first_item_key}\n")
+            print(f"DISCARD: {first_item_key}")
 
         self.cache_data[key] = item
 
@@ -39,6 +40,6 @@ class FIFOCache(BaseCaching):
         """
         return the value in self.cache_data linked to key
         """
-        if key is None or key not in self.cache_data:
+        if key is None or key not in self.cache_data.keys():
             return None
-        return self.cache_data.get[key]
+        return self.cache_data.get(key)
