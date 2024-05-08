@@ -29,10 +29,9 @@ class LIFOCache(BaseCaching):
 
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS and \
                 key not in self.cache_data.keys():
-            # Find the first item inserted and remove it
-            first_item_key = next(reversed(self.cache_data.keys()))
-            del self.cache_data[first_item_key]
-            print(f"DISCARD: {first_item_key}")
+            # delete the last item
+            last_item_key, last_item_value = self.cache_data.popitem()
+            print(f"DISCARD: {last_item_key}")
 
         self.cache_data[key] = item
 
