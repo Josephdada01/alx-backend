@@ -2,6 +2,11 @@
 """ Basic Flask app """
 from flask import Flask, render_template, request
 from flask_babel import Babel, _
+"""
+Use the _ or gettext function to parametrize
+your templates. Use the message IDs home_title
+and home_header.
+"""
 
 
 class Config:
