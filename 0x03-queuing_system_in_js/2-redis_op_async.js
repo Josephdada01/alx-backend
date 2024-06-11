@@ -20,9 +20,9 @@ client.on('error', (err) => {
     }
 })();
 
-// functions: setNewSchool: It accepts two arguments schoolName, and value.
-// It should set in Redis the value for the key schoolName
-// It should display a confirmation message using redis.print
+/* functions: setNewSchool: It accepts two arguments schoolName, and value.
+It should set in Redis the value for the key schoolName
+ It should display a confirmation message using redis.print
 const setNewSchool = async (schoolName, value) => {
     try {
         await client.set(schoolName, value, (err, reply) => {
@@ -36,7 +36,17 @@ const setNewSchool = async (schoolName, value) => {
         console.error(`Error: ${err.message}`);
     }
 };
-
+*/
+// Function to set a new school in Redis using callbacks
+const setNewSchool = (schoolName, value) => {
+    client.set(schoolName, value, (err, reply) => {
+        if (err) {
+            console.error(`Error setting value: ${err.message}`);
+        } else {
+            console.log(`Set key ${schoolName}: ${reply}`);
+        }
+    });
+};
 // displaySchoolValue:
 // It accepts one argument schoolName.
 // It should log to the console the value for the key passed as argument
